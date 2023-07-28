@@ -104,6 +104,7 @@ if __name__ == '__main__':
                 # Perform specific tasks based on user input
                 open_app(query, say)
                 open_webapp(query, say)
+                print("test")
         else:
             # If query is None, there was an issue with speech recognition
             say("Sorry, I couldn't understand you.")

@@ -7,6 +7,7 @@ def get_news(query):
 
     response = requests.get(url)
 
+
     if response.status_code == 200:
         data = response.json()
         articles = data['articles']
