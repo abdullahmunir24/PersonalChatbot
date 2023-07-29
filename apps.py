@@ -8,7 +8,6 @@ def open_app(query,say):
         ["calendar", "open -a calendar"],
         ["weather app", "open -a weather"],
         ["whatsapp", "open -a WhatsApp"],
-        # Add other app commands here
     ]
 
     for a in apps:

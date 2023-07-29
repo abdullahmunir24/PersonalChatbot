@@ -10,6 +10,8 @@ import subprocess
 from webapps import open_webapp
 from apps import open_app
 from instagram import login_instagram
+from news import get_news
+from weather import process_query
 
 chatStr = ""
 
@@ -29,7 +31,7 @@ def chat(query):
         presence_penalty=0
     )
 
-    assistant_response = say(response["choices"][0]["text"])
+    assistant_response = response["choices"][0]["text"]
     chatStr += f"{assistant_response}\n"
     return assistant_response
 
@@ -88,7 +90,7 @@ if __name__ == '__main__':
         if query is not None:
             if "open my instagram" in query.lower():
                 login_instagram()
-            elif "shut down assistant" in query.lower():
+            elif "goodbye assistant" in query.lower():
                 say("Goodbye boss, shutting down.")
                 break  # Exit the while loop and stop listening
             elif "reset chat" in query.lower():
@@ -100,11 +102,37 @@ if __name__ == '__main__':
             elif "artificial intelligence" in query.lower():
                 ai(prompt=query)
                 print("done")
+
+            elif "Tell me the weather for" in query.lower():
+                weather_data = process_query(query)
+                if weather_data:
+                    say(weather_data)
+                    print("actual")
+
+            elif "news" in query.lower():
+                try:
+                    say("How many news headlines would you like to see? Type the number in the chat")
+                    num_headlines = int(input())
+                except ValueError:
+                    say("Invalid input for the number of headlines.")
+                    continue
+
+                say("Which country's news are you interested in? Type in the ISO 3166-1 code for the country, such as for USA it would be 'us', and for Canada it would be 'ca'")
+                country = input().lower()
+
+                news_data = get_news(country, num_headlines)
+                if news_data:
+                    say(news_data)
+
+
             else:
-                # Perform specific tasks based on user input
-                open_app(query, say)
-                open_webapp(query, say)
-                print("test")
+
+                if "open " in query.lower():
+                    open_app(query, say)
+                    open_webapp(query, say)
+                else:
+                    # Use chat() function for general queries
+                    response = chat(query)
+                    say(response)
         else:
-            # If query is None, there was an issue with speech recognition
             say("Sorry, I couldn't understand you.")

@@ -1,19 +1,16 @@
 import requests
 from keys import newsapikey
 
-def get_news(query):
-    apikey = newsapikey
-    url = f'https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey={apikey}'
+def get_news(country, num_headlines):
+    main_url = "https://newsapi.org/v2/top-headlines"
+    params = {"country": country, "apiKey": newsapikey}
 
-    response = requests.get(url)
-
-
+    response = requests.get(main_url, params=params)
     if response.status_code == 200:
-        data = response.json()
-        articles = data['articles']
-
-        for article in articles:
-            print("Title: " + article['title'])
-            print("Description: " + article['description'])
+        news_data = response.json()
+        articles = news_data.get("articles", [])
+        headlines = "\n".join([article["title"] for article in articles[:num_headlines]])
+        return headlines
     else:
-        print("Error accessing news API. Status Code:", response.status_code)
+        print("Failed to fetch news.")
+        return None
