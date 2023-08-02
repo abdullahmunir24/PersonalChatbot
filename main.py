@@ -11,16 +11,16 @@ from webapps import open_webapp
 from apps import open_app
 from instagram import login_instagram
 from news import get_news
-from weather import process_query
+from weather import get_weather_for_place
+from weather import get_weather_forecast_for_place
 
 chatStr = ""
 
-
 def chat(query):
     global chatStr
-    print(chatStr)
     openai.api_key = apikey
-    chatStr += f"Abdullah: {query}\n Abdullah's Assistant: "
+    chatStr += f"Abdullah: {query}Abdullah's Assistant: "
+
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=chatStr,
@@ -32,7 +32,8 @@ def chat(query):
     )
 
     assistant_response = response["choices"][0]["text"]
-    chatStr += f"{assistant_response}\n"
+    chatStr += f"{assistant_response}"
+    print(assistant_response)
     return assistant_response
 
 
@@ -84,7 +85,7 @@ def take():
 if __name__ == '__main__':
     say("Hello boss, I am your personal Assistant ")
     while True:
-        print("Listening...")
+        print("\nListening...")
         query = take()
 
         if query is not None:
@@ -103,11 +104,24 @@ if __name__ == '__main__':
                 ai(prompt=query)
                 print("done")
 
-            elif "Tell me the weather for" in query.lower():
-                weather_data = process_query(query)
+            elif "tell me the weather for" in query.lower():
+                place_name = query.lower().split("tell me the weather for ")[1]
+                weather_data = get_weather_for_place(place_name)
                 if weather_data:
                     say(weather_data)
-                    print("actual")
+
+            elif "give me the weather forecast for" in query.lower():
+                place_name_forecast = query.lower().split("give me the weather forecast for ")[1]
+                try:
+                    say("How many days weather forecast would you like to see? Type the number in the chat")
+                    num_days = int(input())
+                except ValueError:
+                    say("Invalid input for the number of days.")
+                    continue
+                weather_data_forecast = get_weather_forecast_for_place(place_name_forecast,num_days)
+                if weather_data_forecast:
+                    say(weather_data_forecast)
+
 
             elif "news" in query.lower():
                 try:
@@ -131,7 +145,6 @@ if __name__ == '__main__':
                     open_app(query, say)
                     open_webapp(query, say)
                 else:
-                    # Use chat() function for general queries
                     response = chat(query)
                     say(response)
         else:
