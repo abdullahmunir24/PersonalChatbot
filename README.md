@@ -53,9 +53,7 @@ The code for the personal assistant is divided into several files:
 * `weather.py`: This file contains the main code for providing real-time weather updates.
 * `news.py`: This file contains the main code for providing real-time news updates.
 
-License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
 
 Contact
 
