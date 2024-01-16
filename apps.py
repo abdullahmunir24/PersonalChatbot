@@ -12,5 +12,5 @@ def open_app(query,say):
 
     for a in apps:
         if f"open {a[0].lower()}" in query.lower():
-            say(f"Opening {a[0]} boss..")
+            say(f"Opening {a[0]} Abdullah..")
             os.system(a[1])

@@ -22,7 +22,7 @@ def chat(query):
     chatStr += f"Abdullah: {query}Abdullah's Assistant: "
 
     response = openai.Completion.create(
-        model="text-davinci-003",
+        model="gpt-3.5-turbo-instruct",
         prompt=chatStr,
         temperature=0.7,
         max_tokens=256,
@@ -42,7 +42,7 @@ def ai(prompt):
     s = f"OpenAI response for Prompt: {prompt} \n *************************\n\n"
 
     response = openai.Completion.create(
-        model="text-davinci-003",
+        model="gpt-3.5-turbo-instruct",
         prompt=prompt,
         temperature=1,
         max_tokens=256,
@@ -83,7 +83,7 @@ def take():
 
 
 if __name__ == '__main__':
-    say("Hello boss, I am your personal Assistant ")
+    say("Hello Abdullah, I am your personal Assistant ")
     while True:
         print("\nListening...")
         query = take()
@@ -92,14 +92,14 @@ if __name__ == '__main__':
             if "open my instagram" in query.lower():
                 login_instagram()
             elif "goodbye assistant" in query.lower():
-                say("Goodbye boss, shutting down.")
-                break  # Exit the while loop and stop listening
+                say("Goodbye Abdullah, shutting down.")
+                break
             elif "reset chat" in query.lower():
                 chatStr = ""
             elif "the time" in query.lower():
                 hour = datetime.datetime.now().strftime("%H")
                 min = datetime.datetime.now().strftime("%M")
-                say(f"Boss, the time is {hour}:{min}")
+                say(f"Abdullah, the time is {hour}:{min}")
             elif "artificial intelligence" in query.lower():
                 ai(prompt=query)
                 print("done")

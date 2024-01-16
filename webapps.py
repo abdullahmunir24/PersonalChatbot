@@ -51,7 +51,7 @@ def open_webapp(query,say):
 
     for w in web:
         if f"open {w[0].lower()}" in query.lower():
-            say(f"Opening {w[0]} sir..")
+            say(f"Opening {w[0]} Abdullah..")
             webbrowser.open(w[1])
 
 
