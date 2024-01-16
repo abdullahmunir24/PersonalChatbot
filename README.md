@@ -1,4 +1,4 @@
-# Personal-Chatbot
+# PersonalChatbot
 
 Introduction
 
@@ -13,8 +13,8 @@ The AI chatbot personal assistant is designed to be a versatile and helpful tool
 To install the personal assistant, clone the repository and install the required dependencies:
 
 ```
-git clone https://github.com/abdullah-almutairi/personal-assistant.git
-cd personal-assistant
+git clone https://github.com/your-username/PersonalChatbot.git
+cd PersonalChatbot
 pip install -r requirements.txt
 ```
 
@@ -34,15 +34,15 @@ The personal assistant has a variety of features, including:
 
 * Conversations: The chatbot can engage in text-based conversations with users, making it a friendly and interactive personal assistant. It utilizes the OpenAI API key for this purpose.
   
-* Opening Applications: The personal assistant can open applications on your computer. For example, you can instruct it to "Open Notes" to access the Notes application.
+* Opening Applications: The personal assistant can open specific applications on your computer. The applications you can open are mentioned under 'apps.py'. For example, you can instruct it to "Open Notes" to access the Notes application. To initiate this action, use this keyword: "open".
   
-* Opening Web Applications: The personal assistant can open websites on your computer. For instance, you can instruct it to "Open YouTube" to launch the YouTube application.
+* Opening Web Applications: The personal assistant can open specific websites on your browser. The websites you can open are mentioned under 'webapps.py'. For instance, you can instruct it to "Open YouTube" to launch the YouTube application. To initiate this action, use this keyword: "open".
   
 * Telling the Latest Time: The personal assistant can tell you the latest time using key words. For instance, you can tell it to "Give me the latest time" to receive the upto date time. To initiate this action, use these keywords: "the time". It utilizes the Python datetime library for this purpose
   
 * Searching the Web & Answering Questions: The personal assistant can search the web for information. For example, you can inquire, "Who is the current president of the US" to obtain information about the current president of the United States. It utilizes the OpenAI API key for this purpose.
 
-* AI Powered Writing Tasks: The personal assistant can use the OpenAI API key to do various writing tasks using key words. For example, it can write an essay about the positives and negatives of artificial intelligence if you say "Using artificial intelligence write me an essay about the positives and negatives of AI." The generated essay will be stored under a directory called "ai". To initiate this action, use these keywords: "artificial intelligence".
+* AI Powered Writing Tasks: The personal assistant can use the OpenAI API key to do various writing tasks using key words. For example, it can write an essay about the positives and negatives of artificial intelligence if you say "Using artificial intelligence write me an essay about the positives and negatives of AI." The generated essay will be stored under a directory called "ai" after the program has exited. To initiate this action, use these keywords: "artificial intelligence".
   
 * Givig The Latest Weather: The personal assistant can provide weather forecasts for any location using key words. You can ask, "Tell me the weather for San Francisco?" to retrieve the weather information for San Francisco. To initiate this action, use these keywords: "tell me the weather for" Additionally, you can say, "Give me the weather forecast for Austin?" and it will prompt you to specify the number of days you'd like the forecast for. Once you provide the number of days, it will present you with the weather forecast for Austin. This feature relies on the weather API key. To initiate this action, use these keywords: "give me the weather forecast for".
   
