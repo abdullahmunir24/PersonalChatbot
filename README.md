@@ -6,7 +6,7 @@ Welcome to the AI Chatbot Personal Assistant project repository! This project ai
 
 Project Overview
 
-The AI chatbot personal assistant is designed to be a versatile and helpful tool that can assist users in a variety of ways. It combines natural language processing (NLP) and API integration to provide a range of functionalities.
+The AI chatbot personal assistant is designed to be a versatile and helpful tool that can assist users in a variety of ways. It combines advanced language understanding and API integration to provide a range of functionalities.
 
 ## Installation
 
